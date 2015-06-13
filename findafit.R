@@ -3,6 +3,7 @@
 #                                                                             #
 # Given a bridge hand a=c(s,h,d,c) calculates probability no fit of fit+cards #
 # i.e. partner holds b=c(s2,h2,d2,c2) and a[i]+b[i] < fit,                    #
+# also that opponents have no fit of fit+ cards                               #
 # fit should be >= max(hand[i]) and <= 13.                                    #
 # helper function findshapes returns list of possible shapes opposite         #
 # helper function handprob calculates probability of a given shape            #
@@ -10,31 +11,30 @@
 ###############################################################################
 #  Examples:
 #> nofit(c(2,2,4,5),9)
-#70 patterns found
-#[1] 0.6246847
+#44 patterns found
+#[1] 0.4828198
 #> nofit(c(2,2,4,5),8)
-#10 patterns found
-#[1] 0.1551474
+#6 patterns found
+#[1] 0.1021703
 #> nofit(c(3,3,4,3),7)
 #0 patterns found
 #[1] 0
-
-
+#
+# can also calcu
+#
 findshapes <- function(hand,fit){
   # creates a list of all patterns opposite hand that have fit < fit cards
+  # also ensure that opponents have no fit of fit+ cards
   # max(hand[i]) <= fit <= 13
   cards <- 0:13
   # compute range of all four suits (assumes fit >= max(hand[i]))
-  # for NEITHER SIDE TO HAVE FIT, put lower limit on cards, i.e.
-  #
+  # this version: NEITHER SIDE TO HAVE FIT, as lower limit on cards
+  # to calculate: JUST YOUR SIDE TO HAVE FIT, remove lower limit here
+  # e.g. s <- subset(cards, cards < (fit- hand[1]))
   s <- subset(cards, cards>(13-fit-hand[1]) & cards < (fit- hand[1]))
-  message (s)
   h <- subset(cards, cards>(13-fit-hand[2]) & cards < (fit- hand[2]))
-  message(h)
   d <- subset(cards, cards>(13-fit-hand[3]) & cards < (fit- hand[3]))
-  message(d)
   c <- subset(cards, cards>(13-fit-hand[4]) & cards < (fit- hand[4]))
-  message(c)
   # all combinations, return only hands with 13 cards
   combs <- expand.grid(s,h,d,c)
   shapes <- combs[rowSums(combs)==13,]
