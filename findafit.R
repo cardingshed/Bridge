@@ -25,10 +25,16 @@ findshapes <- function(hand,fit){
   # max(hand[i]) <= fit <= 13
   cards <- 0:13
   # compute range of all four suits (assumes fit >= max(hand[i]))
-  s <- cards[cards<(fit - hand[1])]
-  h <- cards[cards<(fit - hand[2])]
-  d <- cards[cards<(fit - hand[3])]
-  c <- cards[cards<(fit - hand[4])]
+  # for NEITHER SIDE TO HAVE FIT, put lower limit on cards, i.e.
+  #
+  s <- subset(cards, cards>(13-fit-hand[1]) & cards < (fit- hand[1]))
+  message (s)
+  h <- subset(cards, cards>(13-fit-hand[2]) & cards < (fit- hand[2]))
+  message(h)
+  d <- subset(cards, cards>(13-fit-hand[3]) & cards < (fit- hand[3]))
+  message(d)
+  c <- subset(cards, cards>(13-fit-hand[4]) & cards < (fit- hand[4]))
+  message(c)
   # all combinations, return only hands with 13 cards
   combs <- expand.grid(s,h,d,c)
   shapes <- combs[rowSums(combs)==13,]
