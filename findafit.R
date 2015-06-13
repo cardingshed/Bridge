@@ -19,9 +19,7 @@
 #> nofit(c(3,3,4,3),7)
 #0 patterns found
 #[1] 0
-#
-# can also calcu
-#
+
 findshapes <- function(hand,fit){
   # creates a list of all patterns opposite hand that have fit < fit cards
   # also ensure that opponents have no fit of fit+ cards
