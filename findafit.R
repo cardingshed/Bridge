@@ -45,7 +45,7 @@ handprob <- function(shape,hand){
   return (specified/allpossible)
 }
 nofit <- function(hand,fit){
-  # input hand as a vector c(spades,hearts,diamonds,clubs) e.g. c(4333)
+  # input hand as a vector c(spades,hearts,diamonds,clubs) e.g. c(4,3,3,3)
   # calls findshapes to exhaustively list all possible shapes
   # uses lapply and handprob to find probability for each shape
   # returns sum of probabilities
