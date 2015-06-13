@@ -9,9 +9,11 @@
 # helper function handprob calculates probability of a given shape            #
 # main function nofit sums all probabilities                                  #
 ###############################################################################
-# for 2245, function finds 70 possible hands where our side has no 9+ card fit#
-# for 2245, function finds 44 possible hands where neither side has 9+ fit    #
-#
+# for 2245, function finds 70 shapes where our side has no 9+ card fit        #
+# for 2245, function finds 44 shapes where neither side has 9+ fit            # 
+# probability(neither side has 9 card fit | 2245 shape held) = 0.48           #
+###############################################################################
+# 
 #  Example Usage:
 #> nofit(c(2,2,4,5),9)
 #44 patterns found
