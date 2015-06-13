@@ -4,9 +4,9 @@
 # Given a bridge hand a=c(s,h,d,c) calculates probability no fit of fit+cards #
 # i.e. partner holds b=c(s2,h2,d2,c2) and a[i]+b[i] < fit,                    #
 # fit should be >= max(hand[i]) and <= 13.                                    #
-# function findshapes returns list of possible shapes opposite                #
-# function handprob calculates probability of a given shape                   #
-# function nofit sums all probabilities                                       #
+# helper function findshapes returns list of possible shapes opposite         #
+# helper function handprob calculates probability of a given shape            #
+# main function nofit sums all probabilities                                  #
 ###############################################################################
 #  Examples:
 #> nofit(c(2,2,4,5),9)
