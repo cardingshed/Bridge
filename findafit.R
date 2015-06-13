@@ -39,9 +39,9 @@ findshapes <- function(hand,fit){
 }
 handprob <- function(shape,hand){
   # probability of shape c(s,d,h,c) opposite, given you hold hand c(s,d,h,c) 
-  specified = choose(13-hand[1],shape[1])*choose(13-hand[2],shape[2])*
+  specified <- choose(13-hand[1],shape[1])*choose(13-hand[2],shape[2])*
     choose(13-hand[3],shape[3])*choose(13-hand[4],shape[4])
-  allpossible = choose(39,13)
+  allpossible <- choose(39,13)
   return (specified/allpossible)
 }
 nofit <- function(hand,fit){
