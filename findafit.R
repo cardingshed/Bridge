@@ -45,8 +45,10 @@ handprob <- function(shape,hand){
   return (specified/allpossible)
 }
 nofit <- function(hand,fit){
-  # hand vector c(spades,hearts,diamonds,clubs) e.g. c(4333)
-  # vector determine if no fit >= fit e.g. fit = 9+ cards
+  # input hand as a vector c(spades,hearts,diamonds,clubs) e.g. c(4333)
+  # calls findshapes to exhaustively list all possible shapes
+  # uses lapply and handprob to find probability for each shape
+  # returns sum of probabilities
   shapelist <- findshapes(hand,fit)
   cumulativeprob <- sum(unlist(lapply(shapelist,handprob,hand=hand)))
   return (cumulativeprob)
